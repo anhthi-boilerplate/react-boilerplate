@@ -1,7 +1,7 @@
-import { HomeWrapper } from "./Home.styled";
 
 import HeartSvg from "../../assets/icons/heart.svg";
 import reactJsPng from "../../assets/images/reactjs.png";
+import { HomeWrapper } from "./Home.styled";
 
 const Home = () => {
   return (

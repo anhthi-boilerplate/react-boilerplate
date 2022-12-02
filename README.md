@@ -76,3 +76,12 @@ Resolve the type checking for images by adding `declare module "*.png"` to typin
 Install dependencies and add a new rule to webpack.base.js
 
     npm i @svgr/webpack -D
+
+## 🌄 Adding ESLint
+
+Install dependencies
+
+    npm i eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-import-resolver-typescript -D
+    npm i @typescript-eslint/parser @typescript-eslint/eslint-plugin -D
+
+Adding the .eslintrc with the config as in repo
