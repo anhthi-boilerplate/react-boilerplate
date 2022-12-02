@@ -4,7 +4,7 @@ const webpackBase = require("./webpack.base");
 
 module.exports = merge(webpackBase, {
   mode: "development",
-  devtool: "source-map",
+  devtool: "cheap-module-source-map",
   devServer: {
     port: 3000,
     open: true,

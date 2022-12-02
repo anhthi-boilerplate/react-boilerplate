@@ -67,7 +67,7 @@ Install dependencies
 
 Add `babel-plugin-styled-components` to Babel plugin config
 
-## 🌄 Handling Image
+## 🌄 Handling Images
 
 Resolve the type checking for images by adding `declare module "*.png"` to typings/global.d.ts file and add a rule to webpack.base.js
 
