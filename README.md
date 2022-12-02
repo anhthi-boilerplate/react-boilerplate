@@ -48,7 +48,7 @@ Create the .babelrc at the root dir for Babel config with below options
 
 Install dependencies
 
-    npm i webpack webpack-cli webpack-dev-server html-webpack-plugin -D
+    npm i webpack webpack-cli webpack-dev-server html-webpack-plugin webpack-merge -D
 
 Create webpack.base.js to setup Webpack
 
@@ -57,3 +57,22 @@ Adding html-webpack-plugin to the webpack plugins
 Adding the start script to package.json file
 
     "start": "webpack serve --config webpack/webpack.base.js --open"
+
+## 🌄 Adding Styled-components
+
+Install dependencies
+
+    npm i babel-plugin-styled-components @types/styled-components -D
+    npm i styled-components
+
+Add `babel-plugin-styled-components` to Babel plugin config
+
+## 🌄 Handling Image
+
+Resolve the type checking for images by adding `declare module "*.png"` to typings/global.d.ts file and add a rule to webpack.base.js
+
+## 🌄 Handling SVG
+
+Install dependencies and add a new rule to webpack.base.js
+
+    npm i @svgr/webpack -D

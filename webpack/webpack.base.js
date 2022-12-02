@@ -1,28 +1,21 @@
 const path = require("path");
 const htmlWebpackPlugin = require("./plugins/html-webpack-plugin");
 
+const handleTs = require("./rules/handle-ts");
+const handleImages = require("./rules/handle-images");
+const handleSvg = require("./rules/handle-svg");
+
 module.exports = {
   entry: path.resolve(__dirname, "../src/index.tsx"),
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(ts|js)x?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-          },
-        ],
-      },
-    ],
-  },
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "bundle.js",
   },
-  mode: "development",
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  module: {
+    rules: [handleTs(), handleImages(), handleSvg()],
+  },
   plugins: [htmlWebpackPlugin()],
 };

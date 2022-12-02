@@ -1,3 +1,5 @@
-const App = () => <strong>Welcome to webpack-ts-boilerplate</strong>;
+import Home from "./pages/Home";
+
+const App = () => <Home />;
 
 export default App;
