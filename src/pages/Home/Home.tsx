@@ -1,4 +1,3 @@
-
 import HeartSvg from "../../assets/icons/heart.svg";
 import reactJsPng from "../../assets/images/reactjs.png";
 import { HomeWrapper } from "./Home.styled";
@@ -9,7 +8,7 @@ const Home = () => {
       <p>
         Welcome to webpack-ts-boilerplate repo! <HeartSvg />
       </p>
-      <img src={reactJsPng} width="100px" />
+      <img src={reactJsPng} width="100px" alt="heart" />
     </HomeWrapper>
   );
 };

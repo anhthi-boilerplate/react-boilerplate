@@ -2,34 +2,36 @@
 
 This is the step-by-step hands-on to setup a complete React app from scratch with scalable structure and modern utilities. We will discover how to combine all pieces of stuff to convert from typescript code to ES5 which can be understood from browser
 
-## 🌄 Preparation
+## 🌄 Init Project
 
-Create the project structure and generate the package.json by
+Create the project structure and generate the package.json by command
 
     npm init -y
 
-Install react, react-dom and @types
+## 🌄 React
+
+Install dependencies
 
     npm i react react-dom
     npm i @types/react @types/react-dom -D
 
-## 🌄 Adding Typescript
+## 🌄 Typescript
 
 Install dependencies
 
     npm i typescript -D
 
-Generate tsconfig.json at the root dir with these config below
+Generate tsconfig.json
 
     npx tsc --init
 
-## 🌄 Adding Babel
+## 🌄 Babel
 
 Install dependencies
 
     npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript babel-loader -D
 
-Create the .babelrc at the root dir for Babel config with below options
+We also need the .babelrc for babel configuration at the root dir
 
     {
       "presets": [
@@ -44,11 +46,11 @@ Create the .babelrc at the root dir for Babel config with below options
       ]
     }
 
-## 🌄 Adding Webpack
+## 🌄 Webpack
 
 Install dependencies
 
-    npm i webpack webpack-cli webpack-dev-server html-webpack-plugin webpack-merge -D
+    npm i webpack webpack-cli webpack-dev-server webpack-merge html-webpack-plugin -D
 
 Create webpack.base.js to setup Webpack
 
@@ -56,9 +58,9 @@ Adding html-webpack-plugin to the webpack plugins
 
 Adding the start script to package.json file
 
-    "start": "webpack serve --config webpack/webpack.base.js --open"
+    "start": "webpack serve --config webpack/webpack.dev.js"
 
-## 🌄 Adding Styled-components
+## 🌄 Styled-Components
 
 Install dependencies
 
@@ -67,21 +69,44 @@ Install dependencies
 
 Add `babel-plugin-styled-components` to Babel plugin config
 
+    "plugins": ["babel-plugin-styled-components"]
+
 ## 🌄 Handling Images
 
-Resolve the type checking for images by adding `declare module "*.png"` to typings/global.d.ts file and add a rule to webpack.base.js
+Resolve the type checking for images by adding `declare module "*.png"` to typings/global.d.ts file
+
+Add a rule to webpack.base.js
 
 ## 🌄 Handling SVG
 
-Install dependencies and add a new rule to webpack.base.js
+Install dependencies
 
     npm i @svgr/webpack -D
 
-## 🌄 Adding ESLint
+Resolve the type checking for images by adding `declare module "*.svg"` to typings/global.d.ts file
+Add a new rule to webpack.base.js
+
+## 🌄 ESLint
 
 Install dependencies
 
-    npm i eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-import-resolver-typescript -D
+    npm i eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-import-resolver-typescript eslint-plugin-jsx-a11y -D
     npm i @typescript-eslint/parser @typescript-eslint/eslint-plugin -D
 
 Adding the .eslintrc with the config as in repo
+Adding the lint script to package.json
+
+    "lint": "eslint src --ext .ts,.tsx,.js --fix"
+
+## 🌄 Prettier
+
+Install dependencies
+
+    npm i prettier eslint-config-prettier eslint-plugin-prettier -D
+
+Adding the .prettier at the root dir with the config as in repo
+Update the eslint extends with
+
+    "extends": ["prettier", "plugin:prettier/recommend"]
+
+The final step is adding the format script to package.json
