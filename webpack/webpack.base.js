@@ -1,5 +1,9 @@
 const path = require("path");
+const dotEnvWebpack = require("./plugins/dotenv-webpack");
 const htmlWebpackPlugin = require("./plugins/html-webpack-plugin");
+const copyWebpackPlugin = require("./plugins/copy-webpack-plugin");
+const cleanWebpackPlugin = require("./plugins/clean-webpack-plugin");
+const bundleStatsWebpackPlugin = require("./plugins/bundle-stats-webpack-plugin");
 
 const handleTs = require("./rules/handle-ts");
 const handleImages = require("./rules/handle-images");
@@ -17,5 +21,10 @@ module.exports = {
   module: {
     rules: [handleTs(), handleImages(), handleSvg()],
   },
-  plugins: [htmlWebpackPlugin()],
+  plugins: [
+    htmlWebpackPlugin(),
+    copyWebpackPlugin(),
+    cleanWebpackPlugin(),
+    bundleStatsWebpackPlugin(),
+  ],
 };

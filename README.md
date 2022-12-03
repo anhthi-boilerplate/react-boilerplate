@@ -29,7 +29,8 @@ Generate tsconfig.json
 
 Install dependencies
 
-    npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript babel-loader -D
+    npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime babel-loader -D
+    npm i @babel/runtime
 
 We also need the .babelrc for babel configuration at the root dir
 
@@ -43,6 +44,14 @@ We also need the .babelrc for babel configuration at the root dir
           }
         ],
         "@babel/preset-typescript"
+      ],
+      "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          {
+            "regenerator": true
+          }
+        ],
       ]
     }
 
@@ -121,3 +130,35 @@ Adding the lint-staged to package.json
 Initialize the husky by command
 
     npx husky-init && npm install
+
+## 🌄 Copy Webpack Plugin
+
+Install dependencies
+
+    npm i copy-webpack-plugin -D
+
+Add new plugin to webpack.base.js
+
+## 🌄 Clean Webpack Plugin
+
+Install dependencies
+
+    npm i clean-webpack-plugin -D
+
+Add new plugin to webpack.base.js
+
+## 🌄 Bundle Stats Webpack Plugin
+
+Install dependencies
+
+    npm i bundle-stats-webpack-plugin -D
+
+Add new plugin to webpack.base.js
+
+## 🌄 DotEnv
+
+Install dependencies
+
+    npm i dotenv-webpack -D
+
+Add new plugin to webpack.dev.js and webpack.prod.js

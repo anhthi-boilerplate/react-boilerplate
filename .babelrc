@@ -9,5 +9,13 @@
     ],
     "@babel/preset-typescript"
   ],
-  "plugins": ["babel-plugin-styled-components"]
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ],
+    "babel-plugin-styled-components"
+  ]
 }
