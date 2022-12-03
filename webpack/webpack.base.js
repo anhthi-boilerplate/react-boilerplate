@@ -1,5 +1,4 @@
 const path = require("path");
-const dotEnvWebpack = require("./plugins/dotenv-webpack");
 const htmlWebpackPlugin = require("./plugins/html-webpack-plugin");
 const copyWebpackPlugin = require("./plugins/copy-webpack-plugin");
 const cleanWebpackPlugin = require("./plugins/clean-webpack-plugin");
@@ -13,7 +12,7 @@ module.exports = {
   entry: path.resolve(__dirname, "../src/index.tsx"),
   output: {
     path: path.resolve(__dirname, "../dist"),
-    filename: "bundle.js",
+    filename: "bundle.[hash:8].js",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],

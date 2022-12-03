@@ -1,38 +1,38 @@
 # Setting up a React project using Webpack and Typescript
 
-This is the step-by-step hands-on to setup a complete React app from scratch with scalable structure and modern utilities. We will discover how to combine all pieces of stuff to convert from typescript code to ES5 which can be understood from browser
+This is the step-by-step hands-on to setup a complete React app from scratch with scalable structure and modern utilities. We will discover how to combine all pieces of stuff to convert from typescript code to ES5 code which can be understood from browser
 
-## 🌄 Init Project
+## 🌄 Initialize Project
 
-Create the project structure and generate the package.json by command
+First of all, let's initialize the project by generating the package.json that helps us to manage me dependencies, devDependencies and scripts. We're going to use `-y` to keep some default settings on the package.json file
 
     npm init -y
 
-## 🌄 React
+## 🌄 Install and setup Typescript
 
-Install dependencies
-
-    npm i react react-dom
-    npm i @types/react @types/react-dom -D
-
-## 🌄 Typescript
-
-Install dependencies
+The idea of this article is to create a large-scale project from scratch so it's really a big shortcoming if we don't have Typescript. Let's install Typescript and generate the tsconfig.json to manage Typescript settings
 
     npm i typescript -D
-
-Generate tsconfig.json
-
     npx tsc --init
+
+## 🌄 Install React and React DOM
+
+We intend to create a React application so that's why we can't live with react and react-dom packages. The React package contains all necessary utilities to define a React component while React DOM package serves as the entry point to the DOM and server renderers for React
+
+    npm i react react-dom
+
+We also need the declaration types for react and react-dom by running the command below
+
+    npm i @types/react @types/react-dom -D
 
 ## 🌄 Babel
 
-Install dependencies
+Browsers have no idea about JSX code while we're writing the JSX code so one of the keys setup we need to achieve is Babel installing. Babel and it's ecosystem will be responsible for transforming the JSX to the Vanilla JS. We will get deeper into each package after installing the below commands
 
     npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime babel-loader -D
     npm i @babel/runtime
 
-We also need the .babelrc for babel configuration at the root dir
+We also need the `.babelrc.json` for babel configuration at the root dir
 
     {
       "presets": [
@@ -55,19 +55,41 @@ We also need the .babelrc for babel configuration at the root dir
       ]
     }
 
+Packages:
+
+- @babel/core: core to run Babel
+- @babel/preset-env: allow use the latest JS code without caring about which syntax transforms
+- @babel/preset-react: used to transform jsx code to js code
+- @babel/preset-typescript: used to transform typescript
+- @babel/runtime: contains Babel modular runtime helpers
+- @babel/plugin-transform-runtime: come along with @babel/runtime
+- babel-loader: serve as a JS file loader to Babel
+
 ## 🌄 Webpack
 
-Install dependencies
+Webpack is a module bundler. Its main purpose is to bundle JS files after being transformed by Babel for usage in the browser. Now there are some other bundlers such as Rollup but webpack is still a big one. Install webpack and its related packages by running the command below
 
     npm i webpack webpack-cli webpack-dev-server webpack-merge html-webpack-plugin -D
 
-Create webpack.base.js to setup Webpack
+There are 3 webpack config files in this repo. Of course, we can still have more for other environments such as uat...but to keep the repo short, we just have 3 now
 
-Adding html-webpack-plugin to the webpack plugins
+- webpack.base.js: the main config file
+- webpack.dev.js: the config file for development
+- webpack.prod.js: the config file for production
 
-Adding the start script to package.json file
+To start development or bundle for production, we need to add some scripts below
 
-    "start": "webpack serve --config webpack/webpack.dev.js"
+    "start": "webpack serve --config webpack/webpack.dev.js",
+    "start:prod": "npm run build && cd dist && npx serve",
+    "build": "webpack --config webpack/webpack.prod.js",
+
+Packages:
+
+- webpack: module bundler
+- webpack-cli: integrate with webpack via command line interface
+- webpack-dev-server: create a web server on localhost to run the app (only development)
+- webpack-merge: combine webpack configs into one
+- html-webpack-plugin: inject bundled files to the index.html
 
 ## 🌄 Styled-Components
 

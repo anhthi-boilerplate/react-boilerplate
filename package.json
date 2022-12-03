@@ -11,7 +11,7 @@
     "lint": "eslint src --ext .ts,.tsx,.js --fix",
     "format": "prettier src/**/*.{ts,tsx,js,json} --write",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "test:cov": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -83,3 +83,4 @@
     ]
   }
 }
+
