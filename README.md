@@ -192,3 +192,15 @@ Create jsconfig.json
         }
       }
     }
+
+## 🌄 Commit Lint
+
+Install dependencies
+
+    npm i @commitlint/config-conventional @commitlint/cli -D
+
+Adding .commitlintrc
+
+Adding hook
+
+    npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
