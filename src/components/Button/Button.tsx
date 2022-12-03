@@ -1,5 +1,5 @@
 const Button = () => {
-  return <button>Click me</button>;
+  return <button data-testid="button">Click me</button>;
 };
 
 export default Button;

@@ -204,3 +204,22 @@ Adding .commitlintrc
 Adding hook
 
     npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
+
+## 🌄 Jest and React Testing Library
+
+Install dependencies
+
+    npm i jest jest-environment-jsdom ts-jest -D
+    npm i @testing-library/react @testing-library/jest-dom -D
+
+Add the `jest.config.js` file at root dir and `jest.setup.js` file to jest folder
+Integrate with ESLint by install
+
+    npm i eslint-plugin-jest -D
+
+Add "jest" to eslint plugins
+Add "plugin:jest/recommended" to eslint extends
+Add "jest": true to eslint env
+Add "jest" and "@testing-library/jest-dom" to types in tsconfig.json
+
+Finally, adding the test and test coverage scripts to package.json
