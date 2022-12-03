@@ -110,3 +110,14 @@ Update the eslint extends with
     "extends": ["prettier", "plugin:prettier/recommend"]
 
 The final step is adding the format script to package.json
+
+## 🌄 Lint-Staged and Husky
+
+Install dependencies
+
+    npm i lint-staged husky -D
+
+Adding the lint-staged to package.json
+Initialize the husky by command
+
+    npx husky-init && npm install
