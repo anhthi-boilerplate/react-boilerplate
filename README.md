@@ -15,6 +15,26 @@ The idea of this article is to create a large-scale project from scratch so it's
     npm i typescript -D
     npx tsc --init
 
+The `tsconfig.json` can be like this
+
+    {
+      "compilerOptions": {
+        "target": "ES6",
+        "jsx": "react-jsx",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "paths": {
+          "*": ["./src/*"]
+        },
+        "types": ["node", "jest", "@testing-library/jest-dom"],
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true
+      },
+      "include": ["src/**/*"],
+      "exclude": ["node_modules", "**/*.test.ts"]
+    }
+
 ## 🌄 Install React and React DOM
 
 We intend to create a React application so that's why we can't live with react and react-dom packages. The React package contains all necessary utilities to define a React component while React DOM package serves as the entry point to the DOM and server renderers for React
@@ -27,7 +47,7 @@ We also need the declaration types for `react` and `react-dom` by running the co
 
 ## 🌄 Install and setup Babel
 
-Browsers have no idea about JSX code while we're writing the JSX code so one of the keys setup we need to achieve is Babel installing. Babel and it's ecosystem will be responsible for transforming the JSX to the Vanilla JS. We will get deeper into each package after installing the below commands
+Browsers have no idea about JSX code while we're writing the JSX code so one of the keys setup we need to achieve is Babel installation. Babel and it's ecosystem will be responsible for transforming the JSX to the Vanilla JS. We will get deeper into each package after installing the below commands
 
     npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime babel-loader -D
     npm i @babel/runtime
@@ -138,7 +158,7 @@ Like image files, we also need to add a declaration to `typings/global.d.ts` fil
 
     declare module "*.svg";
 
-## 🌄 ESLint
+## 🌄 Install and setup ESLint
 
 We write JS code daily but i'm pretty sure we can't avoid make mistake completely, especially in deadline. ESLint helps us on finding and fixing problems with our JS code quickly. Let deep dive by running the command
 
@@ -162,7 +182,7 @@ Packages:
 - `@typescript-eslint/parser`: lint TypeScript source code
 - `@typescript-eslint/eslint-plugin`: provides lint rules for TypeScript codebase
 
-## 🌄 Prettier
+## 🌄 Install and setup Prettier
 
 An application can be developed by a lot of developers with different coding style. Confirm a coding convention with the same format is fairly important and Prettier can help us in this case.
 
@@ -182,7 +202,7 @@ Packages:
 - `eslint-config-prettier`:
 - `eslint-plugin-prettier`:
 
-## 🌄 Lint-Staged and Husky
+## 🌄 Install and setup Lint-Staged and Husky
 
 Lint Staged and Husky usually come together which help us with some validation before doing a git commit. In our scope, Husky is responsible for triggering the Lint Staged on the pre-commit and Lint Staged allows to run ESlint and Prettier with staged files
 
@@ -206,7 +226,7 @@ Packages
 - `lint-staged`: run scripts with staged files
 - `husky`: trigger action on pre-commit
 
-## 🌄 Copy Webpack Plugin, Clean Webpack Plugin, Bundle Stats Webpack Plugin and DotEnv
+## 🌄 Install and setup Copy Webpack Plugin, Clean Webpack Plugin, Bundle Stats Webpack Plugin, DotEnv
 
 These packages are useful in the bundle process, please refer the description for more detail
 
@@ -251,33 +271,33 @@ We also need `jsconfig.json` at the root dir with config as below
       }
     }
 
-## 🌄 Commit Lint
+## 🌄 Install and setup Commit Lint
 
-Install dependencies
+If Prettier helps us confirm the convention on coding, the Commit Lint will take care about the commit message. Don't forget to create the `.commitlintrc.json` at root and running the below command
 
     npm i @commitlint/config-conventional @commitlint/cli -D
 
-Adding .commitlintrc
-
-Adding hook
+Commit Lint also needs Husky to be triggered on the pre-commit step, so we can't lack of adding commit-msg command to Husky
 
     npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
 
-## 🌄 Jest and React Testing Library
+## 🌄 Install and setup Jest, React Testing Library
 
-Install dependencies
+Install Jest and React Testing Library by running the commands
 
     npm i jest jest-environment-jsdom ts-jest -D
     npm i @testing-library/react @testing-library/jest-dom -D
 
-Add the `jest.config.js` file at root dir and `jest.setup.js` file to jest folder
-Integrate with ESLint by install
+Add the `jest.config.js` at root dir and `jest.setup.js` file at jest dir. Jest also need to integrate with ESLint via `eslint-plugin-jest`
 
     npm i eslint-plugin-jest -D
 
-Add "jest" to eslint plugins
-Add "plugin:jest/recommended" to eslint extends
-Add "jest": true to eslint env
-Add "jest" and "@testing-library/jest-dom" to types in tsconfig.json
+Add `jest` to ESLint plugins
+Add `plugin:jest/recommended` to ESLint extends
+Add `jest: true` to ESLint env
+Add `jest` and `@testing-library/jest-dom` to `types` in `tsconfig.json`
 
-Finally, adding the test and test coverage scripts to package.json
+Finally, adding the test and test coverage scripts to the package.json. The result will be in coverage dir
+
+    "test": "jest",
+    "test:cov": "jest --coverage"
