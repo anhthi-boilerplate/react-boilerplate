@@ -16,6 +16,13 @@
         "regenerator": true
       }
     ],
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "extensions": [".ts", ".tsx", ".js"]
+      }
+    ],
     "babel-plugin-styled-components"
   ]
 }

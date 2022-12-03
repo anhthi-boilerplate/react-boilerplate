@@ -1,5 +1,6 @@
-import HeartSvg from "../../assets/icons/heart.svg";
-import reactJsPng from "../../assets/images/reactjs.png";
+import HeartSvg from "assets/icons/heart.svg";
+import reactJsPng from "assets/images/reactjs.png";
+import Button from "components/Button";
 import { HomeWrapper } from "./Home.styled";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       </p>
       <p>The app is running in port {process.env.PORT}</p>
       <img src={reactJsPng} width="100px" alt="heart" />
+      <Button />
     </HomeWrapper>
   );
 };

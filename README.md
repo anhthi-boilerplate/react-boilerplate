@@ -162,3 +162,33 @@ Install dependencies
     npm i dotenv-webpack -D
 
 Add new plugin to webpack.dev.js and webpack.prod.js
+
+## 🌄 Resolve Absolute Paths
+
+Install dependencies
+
+    npm i babel-plugin-module-resolver -D
+
+Add module resolve to babel plugins
+
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "extensions": [".ts", ".tsx", ".js"]
+      }
+    ],
+
+Create jsconfig.json
+
+    {
+      "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "paths": {
+          "*": ["src/*"]
+        }
+      }
+    }
