@@ -271,6 +271,12 @@ We also need `jsconfig.json` at the root dir with config as below
       }
     }
 
+Finally, updating the paths on `tsconfig.json` as below
+
+    "paths": {
+      "*": ["./src/*"]
+    },
+
 ## 🌄 Install and setup Commit Lint
 
 If Prettier helps us confirm the convention on coding, the Commit Lint will take care about the commit message. Don't forget to create the `.commitlintrc.json` at root and running the below command
@@ -301,3 +307,7 @@ Finally, adding the test and test coverage scripts to the package.json. The resu
 
     "test": "jest",
     "test:cov": "jest --coverage"
+
+## 🌄 Install and setup Redux-Toolkit
+
+Follow the [instruction](https://redux-toolkit.js.org/tutorials/quick-start) from redux-toolkit.js.org

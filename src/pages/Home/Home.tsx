@@ -1,18 +1,77 @@
 import HeartSvg from "assets/icons/heart.svg";
-import reactJsPng from "assets/images/reactjs.png";
-import Button from "components/Button";
-import { HomeWrapper } from "./Home.styled";
+import pokemonPng from "assets/images/pokemon.png";
+import { useAppDispatch, useAppSelector } from "core/hooks";
+import { useGetPokemonByIndexQuery } from "./Home.api";
+import { setPokemonIndex } from "./Home.slice";
+import {
+  MovingIndexButton,
+  DescriptionMsg,
+  HomeContainer,
+  WelcomeMsg,
+  MovingButtonWrapper,
+} from "./Home.styled";
 
 const Home = () => {
+  const dispatch = useAppDispatch();
+  const currentIndex = useAppSelector((state) => state.home.pokemonIndex);
+  const { data, isLoading } = useGetPokemonByIndexQuery(currentIndex);
+
+  const previousPokemon = () => {
+    dispatch(setPokemonIndex(currentIndex - 1));
+  };
+
+  const nextPokemon = () => {
+    dispatch(setPokemonIndex(currentIndex + 1));
+  };
+
+  /**
+   * Render
+   */
+
+  const renderWelcomeAndDescriptionMsgs = () => {
+    return (
+      <>
+        <WelcomeMsg data-testid="welcome-message">
+          Welcome to webpack-ts-boilerplate repo! &nbsp;
+          <HeartSvg />
+        </WelcomeMsg>
+        <DescriptionMsg>
+          The app is running in port {process.env.PORT}
+        </DescriptionMsg>
+      </>
+    );
+  };
+
+  const renderPokemonLogo = () => {
+    return (
+      <img src={pokemonPng} width="200px" alt="heart" data-testid="logo" />
+    );
+  };
+
+  const renderMovingButtons = () => {
+    return (
+      <MovingButtonWrapper>
+        <MovingIndexButton label="Previous Pokemon" onClick={previousPokemon} />
+        <MovingIndexButton label="Next Pokemon" onClick={nextPokemon} />
+      </MovingButtonWrapper>
+    );
+  };
+
+  const renderPokemonPhoto = () => {
+    if (isLoading) {
+      return <p>Loading...</p>;
+    }
+
+    return <img src={data?.sprites?.front_shiny} alt={data?.species?.name} />;
+  };
+
   return (
-    <HomeWrapper>
-      <p data-testid="welcome-message">
-        Welcome to webpack-ts-boilerplate repo! <HeartSvg />
-      </p>
-      <p>The app is running in port {process.env.PORT}</p>
-      <img src={reactJsPng} width="100px" alt="heart" data-testid="logo" />
-      <Button />
-    </HomeWrapper>
+    <HomeContainer>
+      {renderWelcomeAndDescriptionMsgs()}
+      {renderPokemonLogo()}
+      {renderMovingButtons()}
+      {renderPokemonPhoto()}
+    </HomeContainer>
   );
 };
 
