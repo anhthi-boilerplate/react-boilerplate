@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Button from "components/Button";
 
 export const HomeContainer = styled.div`
-  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;

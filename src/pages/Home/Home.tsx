@@ -14,7 +14,7 @@ import {
 const Home = () => {
   const dispatch = useAppDispatch();
   const currentIndex = useAppSelector((state) => state.home.pokemonIndex);
-  const { data, isLoading } = useGetPokemonByIndexQuery(currentIndex);
+  const { data, isFetching } = useGetPokemonByIndexQuery(currentIndex);
 
   const previousPokemon = () => {
     dispatch(setPokemonIndex(currentIndex - 1));
@@ -58,7 +58,7 @@ const Home = () => {
   };
 
   const renderPokemonPhoto = () => {
-    if (isLoading) {
+    if (isFetching) {
       return <p>Loading...</p>;
     }
 
