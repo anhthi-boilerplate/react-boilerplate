@@ -10,7 +10,7 @@ First of all, let's initialize the project by generating the `package.json` that
 
 ## 🌄 Install and setup Typescript
 
-The idea of this article is to create a large-scale project from scratch so it's really a big shortcoming if we don't have Typescript. Let's install Typescript and generate the `tsconfig.json` to manage Typescript settings
+The main idea of this article is to create a large-scale project from scratch so it's really a big shortcoming if we don't have Typescript. Let's install Typescript and generate the `tsconfig.json` to manage Typescript settings
 
     npm i typescript -D
     npx tsc --init
@@ -26,7 +26,7 @@ The `tsconfig.json` can be like this
         "paths": {
           "*": ["./src/*"]
         },
-        "types": ["node", "jest", "@testing-library/jest-dom"],
+        "types": ["node"],
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true
@@ -41,7 +41,7 @@ We intend to create a React application so that's why we can't live with react a
 
     npm i react react-dom
 
-We also need the declaration types for `react` and `react-dom` by running the command below
+We also need the declaration types for `react` and `react-dom`
 
     npm i @types/react @types/react-dom -D
 
@@ -82,22 +82,22 @@ Packages:
 - `@babel/preset-react`: used to transform jsx code to js code
 - `@babel/preset-typescript`: used to transform typescript
 - `@babel/runtime`: contains Babel modular runtime helpers
-- `@babel/plugin-transform-runtime`: come along with @babel/runtime
+- `@babel/plugin-transform-runtime`: come along with `@babel/runtime`
 - `babel-loader`: serve as a JS file loader to Babel
 
 ## 🌄 Install and setup Webpack
 
-Webpack is a module bundler. Its main purpose is to bundle JS files after being transformed by Babel for usage in the browser. Now there are some other bundlers such as Rollup but webpack is still a big one. Install webpack and its related packages by running the command below
+Webpack is a module bundler. The main purpose is to bundle JS files after being transformed by Babel for usage in the browser. Now there are some other bundlers such as Rollup but webpack is still a big one. Install webpack and its related packages by running the command below
 
     npm i webpack webpack-cli webpack-dev-server webpack-merge html-webpack-plugin -D
 
-There are 3 webpack config files in this repo. Of course, we can still have more for other environments such as uat...but to keep the repo short, we just have 3 now
+There are 3 webpack config files in this repo. Of course, we can still have more for other environments such as uat, dryrun...but to keep the repo short, we just have 3 now
 
 - `webpack.base.js`: the main config file
 - `webpack.dev.js`: the config file for development
 - `webpack.prod.js`: the config file for production
 
-To start development or bundle for production, we need to add some scripts below
+To start development or bundle for production, we need to add start, start:prod and build
 
     "start": "webpack serve --config webpack/webpack.dev.js",
     "start:prod": "npm run build && cd dist && npx serve",
@@ -124,7 +124,7 @@ Add `babel-plugin-styled-components` to plugins in `.babelrc.json`
 
 ## 🌄 Handle Images
 
-The below rule can tell Webpack how to treat with image files
+The below rule can let Webpack know how to treat with image files
 
     "rules": [
       {
@@ -141,7 +141,7 @@ Resolve the type checking for image files by adding a declaration to `typings/gl
 
 ## 🌄 Handle SVG
 
-To server SVG file as a React component, we need to install the `@svgr/webpack`
+To serve SVG file as a React component, we need to install the `@svgr/webpack`
 
     npm i @svgr/webpack -D
 
@@ -160,12 +160,12 @@ Like image files, we also need to add a declaration to `typings/global.d.ts` fil
 
 ## 🌄 Install and setup ESLint
 
-We write JS code daily but i'm pretty sure we can't avoid make mistake completely, especially in deadline. ESLint helps us on finding and fixing problems with our JS code quickly. Let deep dive by running the command
+We write JS code daily but I'm pretty sure we can't avoid making mistakes completely, especially with deadlines. ESLint helps us on finding and fixing problems with our JS code quickly
 
     npm i eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-import-resolver-typescript eslint-plugin-jsx-a11y -D
     npm i @typescript-eslint/parser @typescript-eslint/eslint-plugin -D
 
-Like Webpack, Babel or Typescript, ESLint need a configuration file to run. Adding the `.eslintrc.json` at the root dir and refer the file on the repo
+Like Webpack, Babel or Typescript, ESLint needs a configuration file to run. Adding the `.eslintrc.json` at the root dir and referring the file on the repo
 
 The final step is adding the lint script to package.json
 
@@ -184,11 +184,11 @@ Packages:
 
 ## 🌄 Install and setup Prettier
 
-An application can be developed by a lot of developers with different coding style. Confirm a coding convention with the same format is fairly important and Prettier can help us in this case.
+An application can be developed by a lot of developers with different coding styles. Confirm a coding convention with the same format is fairly important, and Prettier comes
 
     npm i prettier eslint-config-prettier eslint-plugin-prettier -D
 
-Prettier also need a config file named `.prettierrc.json` at the root dir and integrate with ESLint. We can achieve it by updating the extends in `.eslintrc.json` file as below
+Prettier also needs a config file named `.prettierrc.json` at the root dir and integrates with ESLint. We can achieve it by updating the extends in `.eslintrc.json` file as below
 
     "extends": ["prettier", "plugin:prettier/recommend"]
 
@@ -299,8 +299,11 @@ Add the `jest.config.js` at root dir and `jest.setup.js` file at jest dir. Jest 
     npm i eslint-plugin-jest -D
 
 Add `jest` to ESLint plugins
+
 Add `plugin:jest/recommended` to ESLint extends
+
 Add `jest: true` to ESLint env
+
 Add `jest` and `@testing-library/jest-dom` to `types` in `tsconfig.json`
 
 Finally, adding the test and test coverage scripts to the package.json. The result will be in coverage dir

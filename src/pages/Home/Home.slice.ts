@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "core/store";
 import { HomeState } from "./Home.interfaces";
 
 const initialState: HomeState = {
@@ -11,7 +10,7 @@ export const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
-    setPokemonIndex: (state: RootState, action: PayloadAction<number>) => {
+    setPokemonIndex: (state, action: PayloadAction<number>) => {
       state.pokemonIndex = action.payload;
     },
   },
