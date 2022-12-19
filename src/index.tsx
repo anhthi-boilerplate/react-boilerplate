@@ -1,8 +1,11 @@
 import React from "react";
+
+import { setupListeners } from "@reduxjs/toolkit/query";
 import * as ReactDOMClient from "react-dom/client";
 import { Provider } from "react-redux";
-import { setupListeners } from "@reduxjs/toolkit/query";
+
 import { createStore } from "core/store";
+
 import App from "./App";
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -18,3 +21,5 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
+export type AppDispatch = typeof store.dispatch;

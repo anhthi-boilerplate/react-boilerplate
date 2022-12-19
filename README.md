@@ -291,10 +291,16 @@ Commit Lint also needs Husky to be triggered on the pre-commit step, so we can't
 
 Install Jest and React Testing Library by running the commands
 
-    npm i jest jest-environment-jsdom ts-jest -D
+    npm i jest jest-environment-jsdom ts-jest whatwg-fetch -D
     npm i @testing-library/react @testing-library/jest-dom -D
 
-Add the `jest.config.js` at root dir and `jest.setup.js` file at jest dir. Jest also need to integrate with ESLint via `eslint-plugin-jest`
+Create the `jest.config.js` at root dir
+Create the `jest.setup.js` at jest dir
+
+    require("whatwg-fetch");
+    require("@testing-library/jest-dom");
+
+Jest also need to integrate with ESLint via `eslint-plugin-jest`
 
     npm i eslint-plugin-jest -D
 

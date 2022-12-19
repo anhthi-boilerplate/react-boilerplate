@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import type { PreloadedState } from "@reduxjs/toolkit";
-import { homeApi } from "pages/Home/Home.api";
 
+import { homeApi } from "pages/Home/Home.api";
 import homeReducer from "pages/Home/Home.slice";
 
 const rootReducer = combineReducers({
@@ -19,5 +19,3 @@ export const createStore = (preloadedState?: PreloadedState<RootState>) => {
 };
 
 export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = ReturnType<typeof createStore>;
-export type AppDispatch = typeof createStore;
