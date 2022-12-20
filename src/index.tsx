@@ -4,7 +4,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import * as ReactDOMClient from "react-dom/client";
 import { Provider } from "react-redux";
 
-import { createStore } from "core/store";
+import { createStore } from "src/core/store";
 
 import App from "./App";
 

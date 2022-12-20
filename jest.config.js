@@ -16,5 +16,6 @@ module.exports = {
   moduleNameMapper: {
     "\\.svg": "<rootDir>/jest/__mocks__/svg-mock.js",
     "\\.(png|jpg|jpeg)": "<rootDir>/jest/__mocks__/image-mock.js",
+    "src/(.*)": "<rootDir>/src/$1",
   },
 };

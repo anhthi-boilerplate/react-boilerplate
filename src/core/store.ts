@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import type { PreloadedState } from "@reduxjs/toolkit";
 
-import { homeApi } from "pages/Home/Home.api";
-import homeReducer from "pages/Home/Home.slice";
+import { homeApi } from "src/pages/Home/Home.api";
+import homeReducer from "src/pages/Home/Home.slice";
 
 const rootReducer = combineReducers({
   home: homeReducer,

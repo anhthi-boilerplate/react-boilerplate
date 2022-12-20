@@ -239,44 +239,6 @@ Packages:
 - `bundle-stats-webpack-plugin`: display the detail of bundle size
 - `dotenv-webpack`: inject variables to process.env
 
-## 🌄 Resolve Absolute Paths
-
-Make the code more clear and reduce the git changes in relative path whenever a file location is changed. Continue to run the command below
-
-    npm i babel-plugin-module-resolver -D
-
-Add the `babel-plugin-module-resolver` to `.babelrc.json` plugins
-
-    "plugins": [
-      [
-        "module-resolver",
-        {
-          "root": ["./src"],
-          "extensions": [".ts", ".tsx", ".js"]
-        }
-      ],
-    ]
-
-We also need `jsconfig.json` at the root dir with config as below
-
-    {
-      "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "paths": {
-          "*": ["src/*"]
-        }
-      }
-    }
-
-Finally, updating the paths on `tsconfig.json` as below
-
-    "paths": {
-      "*": ["./src/*"]
-    },
-
 ## 🌄 Install and setup Commit Lint
 
 If Prettier helps us confirm the convention on coding, the Commit Lint will take care about the commit message. Don't forget to create the `.commitlintrc.json` at root and running the below command
@@ -316,6 +278,52 @@ Finally, adding the test and test coverage scripts to the package.json. The resu
 
     "test": "jest",
     "test:cov": "jest --coverage"
+
+## 🌄 Resolve Absolute Paths
+
+Make the code more clear and reduce the git changes in relative path whenever a file location is changed. Continue to run the command below
+
+    npm i babel-plugin-module-resolver -D
+
+Add the `babel-plugin-module-resolver` to `.babelrc.json` plugins
+
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "alias": {
+            "src": "./src"
+          },
+          "extensions": [".ts", ".tsx", ".js"]
+        }
+      ],
+    ]
+
+We also need `jsconfig.json` at the root dir with config as below
+
+    {
+      "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "paths": {
+          "src/*": ["src/*"]
+        }
+      }
+    }
+
+Next, updating the paths on `tsconfig.json` as below
+
+    "paths": {
+      "src/*": ["./src/*"]
+    },
+
+Finally, update the `jest.config.js`
+
+    moduleNameMapper: {
+      "src/(.*)": "<rootDir>/src/$1",
+    },
 
 ## 🌄 Install and setup Redux-Toolkit
 

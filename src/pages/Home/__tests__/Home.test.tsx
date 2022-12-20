@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 
-import { renderWithProvider } from "utils/test/renderWithProvider";
+import { renderWithProvider } from "src/utils/test/renderWithProvider";
 
 import Home from "../Home";
 

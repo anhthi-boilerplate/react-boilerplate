@@ -1,6 +1,6 @@
-import HeartSvg from "assets/icons/heart.svg";
-import pokemonPng from "assets/images/pokemon.png";
-import { useAppDispatch, useAppSelector } from "core/hooks";
+import HeartSvg from "src/assets/icons/heart.svg";
+import pokemonPng from "src/assets/images/pokemon.png";
+import { useAppDispatch, useAppSelector } from "src/core/hooks";
 
 import { useGetPokemonByIndexQuery } from "./Home.api";
 import { setPokemonIndex } from "./Home.slice";

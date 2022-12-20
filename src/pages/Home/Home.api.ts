@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { IPokemon } from "model/pokemon";
+import { IPokemon } from "src/model/pokemon";
 
 export const homeApi = createApi({
   reducerPath: "homeApi",
