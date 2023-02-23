@@ -4,6 +4,7 @@
     "jsx": "react-jsx", // Specify what JSX code is generated
     "module": "commonjs", // Specify what module code is generated
     "moduleResolution": "node", // Specify how TypeScript looks up a file from a given module specifier
+    "lib": ["ESNext", "DOM"],
     "paths": {
       "src/*": ["./src/*"]
     },
@@ -12,6 +13,6 @@
     "forceConsistentCasingInFileNames": true, // Ensure that casing is correct in imports
     "skipLibCheck": true // Skip type checking all .d.ts files
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "**/__tests__/**"]
 }
