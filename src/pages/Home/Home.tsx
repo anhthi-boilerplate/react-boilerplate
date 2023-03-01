@@ -33,7 +33,7 @@ const Home = () => {
     return (
       <>
         <WelcomeMsg data-testid="welcome-message">
-          Welcome to webpack-ts-boilerplate repo! &nbsp;
+          Welcome to react-boilerplate repo! &nbsp;
           <HeartSvg />
         </WelcomeMsg>
         <DescriptionMsg>

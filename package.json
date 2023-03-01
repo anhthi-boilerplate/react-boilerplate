@@ -1,5 +1,5 @@
 {
-  "name": "webpack-ts-boilerplate",
+  "name": "react-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/project-boilerplate/webpack-ts-boilerplate.git"
+    "url": "git+https://github.com/project-boilerplate/react-boilerplate.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/project-boilerplate/webpack-ts-boilerplate/issues"
+    "url": "https://github.com/project-boilerplate/react-boilerplate/issues"
   },
-  "homepage": "https://github.com/project-boilerplate/webpack-ts-boilerplate#readme",
+  "homepage": "https://github.com/project-boilerplate/react-boilerplate#readme",
   "dependencies": {
     "@babel/runtime": "^7.20.6",
     "@reduxjs/toolkit": "^1.9.1",
